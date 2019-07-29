@@ -1,2 +1,3 @@
-# Werewolf-Town-of-Mafia
-Designed as an open-source alternative to Town of Salem due to its new cost. This game is similar to those like Werewolf and Mafia.
+# Werewolf Town of Mafia
+
+Werewolf Town of Mafia is a game based around being able to tell when others are lying, and lying yourself. This is being developed as an open source alternative to Town of Salem, while including some aspects of Mafia and Werewolf. All three of these games are very similar, so we're hoping to pull from all of them to make this version unique, entertaining, and free.
