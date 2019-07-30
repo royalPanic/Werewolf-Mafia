@@ -9,7 +9,7 @@ def accept_incoming_connections():
     while True:
         client, client_address = SERVER.accept()
         print("%s:%s has connected." % client_address)
-        client.send(bytes("Greetings from the cave! Now type your name and press enter!", "utf8"))
+        client.send(bytes("Welcome to Werewolf Mafia v0.1! Set your name in the box below and press enter.", "utf8"))
         addresses[client] = client_address
         Thread(target=handle_client, args=(client,)).start()
 
@@ -30,9 +30,9 @@ def handle_client(client):  # Takes client socket as argument.
             broadcast(msg, name+": ")
         else:
             client.send(bytes("{quit}", "utf8"))
+            broadcast(bytes("%s has left the chat." % name, "utf8"))
             client.close()
             del clients[client]
-            broadcast(bytes("%s has left the chat." % name, "utf8"))
             break
 
 
@@ -46,8 +46,8 @@ def broadcast(msg, prefix=""):  # prefix is for name identification.
 clients = {}
 addresses = {}
 
-HOST = ''
-PORT = 33000
+HOST = '192.168.1.22'
+PORT = 30001
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
 

@@ -4,6 +4,8 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import tkinter
 
+HOST = input('Enter host: ')
+PORT = input('Enter port: ')
 
 def receive():
     """Handles receiving of messages."""
@@ -31,14 +33,17 @@ def on_closing(event=None):
     send()
 
 top = tkinter.Tk()
-top.title("Chatter")
+top.title("Warewolf Mafia v0.1")
 
 messages_frame = tkinter.Frame(top)
 my_msg = tkinter.StringVar()  # For the messages to be sent.
-my_msg.set("Type your messages here.")
+my_msg.set("")
+if my_msg == "{quit}":
+    client_socket.close()
+    top.quit()
 scrollbar = tkinter.Scrollbar(messages_frame)  # To navigate through past messages.
 # Following will contain the messages.
-msg_list = tkinter.Listbox(messages_frame, height=15, width=50, yscrollcommand=scrollbar.set)
+msg_list = tkinter.Listbox(messages_frame, height=30, width=100, yscrollcommand=scrollbar.set)
 scrollbar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
 msg_list.pack(side=tkinter.LEFT, fill=tkinter.BOTH)
 msg_list.pack()
@@ -53,8 +58,6 @@ send_button.pack()
 top.protocol("WM_DELETE_WINDOW", on_closing)
 
 #----Now comes the sockets part----
-HOST = input('Enter host: ')
-PORT = input('Enter port: ')
 if not PORT:
     PORT = 33000
 else:
