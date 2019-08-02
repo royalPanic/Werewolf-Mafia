@@ -46,8 +46,8 @@ def broadcast(msg, prefix=""):  # prefix is for name identification.
 clients = {}
 addresses = {}
 
-HOST = '192.168.1.22'
-PORT = 30001
+HOST = '192.168.1.10'
+PORT = 25911
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
 

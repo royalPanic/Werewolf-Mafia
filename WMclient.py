@@ -4,8 +4,9 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import tkinter
 
-HOST = input('Enter host: ')
-PORT = input('Enter port: ')
+#modified to test with open server
+HOST = "192.168.1.10"
+PORT = 25911
 
 def receive():
     """Handles receiving of messages."""
@@ -33,7 +34,7 @@ def on_closing(event=None):
     send()
 
 top = tkinter.Tk()
-top.title("Warewolf Mafia v0.1")
+top.title("Werewolf Mafia v0.1")
 
 messages_frame = tkinter.Frame(top)
 my_msg = tkinter.StringVar()  # For the messages to be sent.
